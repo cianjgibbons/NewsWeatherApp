@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title start>
+      G00387923 
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="openSettingsPage()">
+        <ion-icon end name="cog"></ion-icon>
+      </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+  <h1>Weather for {{ name }}</h1>
+  <div><img src='{{"http://openweathermap.org/img/w/"+icon+".png"}}'alt=''></div>
+  <h2>{{ weathermain }}</h2>
+  <p>({{ weatherdescription }})</p>
+  <h2>Temperature: {{ temp }}</h2>
+  <p>(Feels like: {{ feel }})</p>
+  <hr>
+  <button ion-button [disabled]="newsDisabled" (click)="displayNews()">News</button>
+  <br>
+  <h2 [hidden]="newsHidden">Total News stories from {{ country }}: {{ totalResults }}</h2>
+  <br>
+  <ion-list>
+    <div *ngFor="let a of articles">
+    <ion-item >
+    <a href="{{ a.url }}" target='_blank'>
+    <ion-thumbnail item-start>
+    <img src="{{ a.urlToImage }}">
+    </ion-thumbnail>
+    </a> 
+    <a href="{{ a.url }}" target='_blank'>
+      <ion-card-title> {{ a.title }} </ion-card-title>
+    </a>
+    <a href="{{ a.url }}" target='_blank'>
+      <p>{{ a.description }}</p>
+    </a>
+    </ion-item>
+  </div>
+  </ion-list>
+
+</ion-content>
